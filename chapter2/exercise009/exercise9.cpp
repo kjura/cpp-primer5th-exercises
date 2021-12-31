@@ -21,6 +21,9 @@ int main(){
     //double wage;
     //double salary = wage = 9999.99;
     //std::cout << "Wage is " << wage << " and salary is " << salary << std::endl;
+    
+    // i has type int, but it contains floating-point type, it will get truncated to 3
+    //int i = 3.14;
 
 
     return 0;
