@@ -3,7 +3,7 @@
 
 // g++ -std=c++11 -pedantic -Wall -Wextra -Werror -Wshadow -Wsign-conversion -g sandbox.cpp -o sandbox
 // g++ -std=c++11 -pedantic -Wall -Wextra -Wsign-conversion -g sandbox.cpp -o sandbox
-// Section 2.2.3, exercise 2.12
+// Section 2.2.4, exercise 2.14
 
 
 
