@@ -2,10 +2,10 @@ Exercise 2.21: Explain each of the following definitions. Indicate whether any a
 
 
 `int i = 0;`
+<br /><br />
+(a) `double* dp = &i;`
 <br />
-(a)`double* dp = &i;`
+(b) `int *ip = i;`
 <br />
-(b)`int *ip = i;`
-<br />
-(c)`int *p = &i;`
+(c) `int *p = &i;`
 <br />
