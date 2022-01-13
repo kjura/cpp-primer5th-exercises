@@ -3,9 +3,9 @@ Exercise 2.21: Explain each of the following definitions. Indicate whether any a
 
 `int i = 0;`
 <br />
-(a)<br /> `double* dp = &i;`
+(a)`double* dp = &i;`
 <br />
-(b)<br /> `int *ip = i;`
+(b)`int *ip = i;`
 <br />
-(c)<br /> `int *p = &i;`
+(c)`int *p = &i;`
 <br />
