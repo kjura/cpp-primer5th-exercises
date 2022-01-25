@@ -20,8 +20,10 @@ int main()
 
     const int &const r2; // ILLEGAL const reference must be initalized
 
-    const int i2 = i, &r = i; //
+    const int i2 = i, &r = i; // LEGAL if i previously defined
 */
+
+    
     
     return 0;
 
