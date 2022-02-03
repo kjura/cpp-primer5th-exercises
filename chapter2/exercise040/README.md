@@ -1,0 +1,1 @@
+Exercise 2.40: Write you own version of the *Sales_data* class.
