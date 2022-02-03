@@ -2,7 +2,7 @@
 My solutions to exercises from C++ Primer (5th Edition).
 | Chapter 2   | Chapter 2  | Chapter 2   | Chapter 2 | Chapter 2 | Chapter 2| 
 | ----------  | ---------- | ----------  | --------- | --------- | -------- |
-| [Exercise 1](chapter2/exercise001) | Exercise 2 | Exercise 3  | Exercise 4 | Exercise 5 | Exercise 6|
-| Exercise 7  | Exercise 8 | Exercise 9  | Exercise 10 | Exercise 11 | Exercise 12|
-| Exercise 13  | Exercise 14 | Exercise 15  | Exercise 16 | Exercise 17 | Exercise 18|
-| Exercise 19  | Exercise 20 | Exercise 21  | Exercise 22 | Exercise 23 | Exercise 24|
+| [Exercise 1](chapter2/exercise001) | [Exercise 2](chapter2/exercise002) | [Exercise 3](chapter2/exercise003)  | [Exercise 4](chapter2/exercise004) | [Exercise 5](chapter2/exercise005) | [Exercise 6](chapter2/exercise006)
+| [Exercise 7](chapter2/exercise001) | [Exercise 8](chapter2/exercise002) | [Exercise 9](chapter2/exercise003)  | [Exercise 10](chapter2/exercise004) | [Exercise 11](chapter2/exercise005) | [Exercise 12](chapter2/exercise006)
+| [Exercise 1](chapter2/exercise001) | [Exercise 2](chapter2/exercise002) | [Exercise 3](chapter2/exercise003)  | [Exercise 4](chapter2/exercise004) | [Exercise 5](chapter2/exercise005) | [Exercise 6](chapter2/exercise006)
+| [Exercise 1](chapter2/exercise001) | [Exercise 2](chapter2/exercise002) | [Exercise 3](chapter2/exercise003)  | [Exercise 4](chapter2/exercise004) | [Exercise 5](chapter2/exercise005) | [Exercise 6](chapter2/exercise006)
