@@ -21,19 +21,43 @@ int main()
     cout << "\nPlease provide string s2 ";
     cin >> s2;
 
+    auto len_s1 = s1.size();
+    auto len_s2 = s2.size();
+
     if (s1 == s2){
-        cout << "String " << s1 << " and string " << s2 << " are equal\n";
+        cout << "String " << s1 << " and string " << s2 << " are equal\n\n";
     }
 
     else{
 
         if (s1 > s2){
-            cout << "String " << s1 << " is greater than string " << s2 << "\n";
+            cout << "String " << s1 << " is greater than string " << s2 << "\n\n";
         }
 
         else {
-            cout << "String " << s2 << " is greater than string " << s1 << "\n";
+            cout << "String " << s2 << " is greater than string " << s1 << "\n\n";
         }
+    }
+
+    
+
+
+    if (len_s1 == len_s2){
+        
+        cout << "String " << s1 << " and string " << s2 << " have the same length\n";
+
+    }
+
+    else{
+
+        if (len_s1 > len_s2){
+            cout << "String " << s1 << " is longer than string " << s2 << "\n";
+        }
+
+        else {
+            cout << "String " << s2 << " is longer than string " << s1 << "\n";
+        }
+
     }
 
 
