@@ -16,19 +16,26 @@ int main()
     
     string one_large_string, temp_str;
 
+
+    /*cout << "Please enter a string" << "\n";
+    while (cin >> temp_str){
+
+        cout << "\nPlease enter a string" << "\n";
+        one_large_string += temp_str;
+        
+    } */
+
     cout << "Please enter a string" << "\n";
     while (cin >> temp_str){
 
         cout << "\nPlease enter a string" << "\n";
         one_large_string += temp_str + " ";
         
-    }
+    } 
+
+
 
     cout << "\nConcatenated string " << one_large_string << "\n\n";
-
-
-
-
 
 
 
