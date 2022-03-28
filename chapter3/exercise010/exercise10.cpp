@@ -14,7 +14,33 @@ using std::endl;
 int main()
 {
     
+    string line;
+
+    cout << "Please enter your string and hit ENTER" << endl;
+    getline(cin, line);
+
+    //cout << line << endl;
+    cout << endl;
+
+    if (!line.empty()){
+
+        for (auto &c : line){
+
+            if (ispunct(c)){
+                ;
+            }
+
+            else{
+                cout << c;
+            }
+
+
+    } 
+
+    }
+
     
+    cout << endl;
 
     return 0;
 }
