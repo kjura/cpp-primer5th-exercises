@@ -1,0 +1,1 @@
+Exercise 3.15: Repeat the previous program but read strings this time.
