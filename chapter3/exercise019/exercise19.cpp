@@ -18,11 +18,32 @@ using std::vector;
 int main()
 {
 
-    vector<int> v1;
-    vector<int> v2;
+    vector<int> v1(10, 42); // This is the way! Short, clear and did I mention that it does not require to write a lot of boilerplate?
+    vector<int> v2{42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
     vector<int> v3;
 
-    
+
+    for (decltype(v3.size()) indx = 0; indx != 10; ++indx) {
+        v3.push_back(42);
+    } 
+
+    for (auto &e : v1){
+        cout << e << " ";
+    }
+
+    cout << endl;
+
+    for (auto &e : v2){
+        cout << e << " ";
+    }
+
+    cout << endl;
+
+    for (auto &e : v3){
+        cout << e << " ";
+    }
+
+    cout << endl;
 
 
     return 0;
