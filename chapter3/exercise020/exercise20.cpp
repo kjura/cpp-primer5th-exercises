@@ -38,5 +38,11 @@ int main()
 
     cout << "\nSum of adjacent elements is: " << sum_adj << "\n";
 
+    // Symmetric sum, first-last, second-second two last etc.
+
+    // Maybe use modulo trick to not get out of bounds?
+    // I mean, but this assumes symmetry and 'infinite' grid such as was on cellular automata
+    // need to investigate more
+
     return 0;
 }
