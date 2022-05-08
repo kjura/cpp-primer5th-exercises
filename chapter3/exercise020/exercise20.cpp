@@ -24,7 +24,19 @@ int main()
     std::cout << "Please enter your integers to be held by container vector<int>. Press Ctrl + D to stop the input: ";
     while (cin >> input_int){
         container.push_back(input_int);
+    } 
+
+    bool isOdd = false;
+
+
+    if (container.size() % 2) {
+
+        isOdd = true;
+        int middle_point = (container.size() - 1) / 2;
+
     }
+
+    
 
     // Sum each pair of adjacent elements
 
@@ -39,10 +51,18 @@ int main()
     cout << "\nSum of adjacent elements is: " << sum_adj << "\n";
 
     // Symmetric sum, first-last, second-second two last etc.
-
+ 
     // Maybe use modulo trick to not get out of bounds?
     // I mean, but this assumes symmetry and 'infinite' grid such as was on cellular automata
-    // need to investigate more
+    // need to investigate more 
+
+    int sum_symmetric = 0;
+
+    for (decltype(container.size()) indx = 0; indx != (container.size() - 1); ++indx){
+
+        sum_symmetric += container[indx] + container[(container.size() - 1) - indx];
+
+    }
 
     return 0;
 }
