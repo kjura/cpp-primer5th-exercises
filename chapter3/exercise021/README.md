@@ -1,0 +1,1 @@
+Exercise 3.21: Redo the first exercise from § 3.3.3 (p. 105, exercise 3.16) using iterators. 
