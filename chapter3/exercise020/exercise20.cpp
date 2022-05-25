@@ -26,21 +26,20 @@ int main()
         container.push_back(input_int);
     } 
 
-    bool isOdd = false;
-
-
-    if (container.size() % 2) {
-
-        isOdd = true;
-        int middle_point = (container.size() - 1) / 2;
-
+    if (container.empty()){
+        cout << "Container cannot be empty. You did not specify any element to save it inside the container, aborting ...\n";
+        return 0;
     }
 
-    
+    if (container.size() == 1){
+        cout << "Container has only one element. Total in the container is " << container[0] << endl;
+        return 0;
+    }
+
 
     // Sum each pair of adjacent elements
 
-    int sum_adj = 0;
+    /*int sum_adj = 0;
     for (decltype(container.size()) indx = 0; indx != (container.size() - 1); ++indx){
 
         //cout << container[indx] << "+" << container[indx + 1] << "= " << container[indx] + container[indx + 1] << "\n";
@@ -48,21 +47,29 @@ int main()
 
     }
 
-    cout << "\nSum of adjacent elements is: " << sum_adj << "\n";
+    cout << "\nSum of adjacent elements is: " << sum_adj << "\n"; */
 
     // Symmetric sum, first-last, second-second two last etc.
- 
-    // Maybe use modulo trick to not get out of bounds?
-    // I mean, but this assumes symmetry and 'infinite' grid such as was on cellular automata
-    // need to investigate more 
 
     int sum_symmetric = 0;
 
-    for (decltype(container.size()) indx = 0; indx != (container.size() - 1); ++indx){
+    
 
-        sum_symmetric += container[indx] + container[(container.size() - 1) - indx];
+    for (decltype(container.size()) indx = 0; indx != container.size() / 2 && indx != container.size(); ++indx){
+
+        
+
+        sum_symmetric += container[indx] + container[container.size() - indx - 1];
+
+        cout << container[indx] << "+" << container[container.size() - indx - 1] << "= " 
+        << container[indx] + container[container.size() - indx - 1] << "\n";
+
 
     }
+
+    cout << "\n";
+    cout << "Symmetric sum: " << sum_symmetric << "\n";
+    cout << "Midpoint of the container " << container.size() / 2 << "\n";
 
     return 0;
 }
