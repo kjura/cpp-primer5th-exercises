@@ -50,10 +50,15 @@ int main()
     cout << "\nSum of adjacent elements is: " << sum_adj << "\n"; */
 
     // Symmetric sum, first-last, second-second two last etc.
+    // If number of elements inside a vector is odd
+    // then the middle element is added as a stand-alone component example:
+    // 3 is a middle element: [1, 2, 3, 4, 5] ----> (1 + 5) + (2 + 4) + 3 = 15
 
     int sum_symmetric = 0;
 
-    
+    if (container.size() % 2 != 0){
+        sum_symmetric += container[(container.size() - 1) / 2];
+    }
 
     for (decltype(container.size()) indx = 0; indx != container.size() / 2 && indx != container.size(); ++indx){
 
