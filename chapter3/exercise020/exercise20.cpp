@@ -21,7 +21,7 @@ int main()
     int input_int;
     std::vector<int> container;
 
-    std::cout << "Please enter your integers to be held by container vector<int>. Press Ctrl + D to stop the input: ";
+    std::cout << "Please enter your integers to be held by container vector<int>. Press Ctrl + D to stop the input: \n";
     while (cin >> input_int){
         container.push_back(input_int);
     } 
@@ -39,15 +39,19 @@ int main()
 
     // Sum each pair of adjacent elements
 
-    /*int sum_adj = 0;
+    cout << "\nAdjacent sum: \n\n";
+
+    int sum_adj = 0;
     for (decltype(container.size()) indx = 0; indx != (container.size() - 1); ++indx){
 
-        //cout << container[indx] << "+" << container[indx + 1] << "= " << container[indx] + container[indx + 1] << "\n";
+        cout << container[indx] << "+" << container[indx + 1] << "= " << container[indx] + container[indx + 1] << "\n";
         sum_adj += container[indx] + container[indx + 1];
 
     }
 
-    cout << "\nSum of adjacent elements is: " << sum_adj << "\n"; */
+    cout << "\nSum of adjacent elements is: " << sum_adj << "\n\n";
+    cout << "--------------------------------" << "\n\n";
+
 
     // Symmetric sum, first-last, second-second two last etc.
     // If number of elements inside a vector is odd
@@ -74,7 +78,8 @@ int main()
 
     cout << "\n";
     cout << "Symmetric sum: " << sum_symmetric << "\n";
-    cout << "Midpoint of the container " << container.size() / 2 << "\n";
+    
+    //cout << "Midpoint of the container " << container.size() << " / " << 2 << " = " << container.size() / 2 << "\n";
 
     return 0;
 }
