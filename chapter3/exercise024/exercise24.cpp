@@ -18,7 +18,40 @@ using std::vector;
 int main(){
 
 
-    
+    int input_int;
+    std::vector<int> container;
+
+    std::cout << "Please enter your integers to be held by container vector<int>. Press Ctrl + D to stop the input: \n";
+    while (cin >> input_int){
+        container.push_back(input_int);
+    } 
+
+    if (container.empty()){
+        cout << "Container cannot be empty. You did not specify any element to save it inside the container, aborting ...\n";
+        return 0;
+    }
+
+    if (container.size() == 1){
+        cout << "Container has only one element. Total in the container is " << container[0] << endl;
+        return 0;
+    }
+
+    cout << "\n";
+    auto it_start = container.cbegin();
+    auto it_end = container.cend();
+    int sum_adjacent = 0;
+
+    // Sum of adjacent elements of std::vector<int> using iterators
+
+
+    for (;(it_start + 1) != it_end && it_start != it_end; ++it_start){
+
+        cout << *it_start << " + " << *(it_start + 1) << " = " << *it_start + *(it_start + 1) << "\n";
+        sum_adjacent += *it_start + *(it_start + 1);
+
+    }
+
+    cout << "Sum of adjacent elements: " << sum_adjacent << "\n";
 
 
     return 0;
