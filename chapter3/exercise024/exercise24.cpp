@@ -53,6 +53,35 @@ int main(){
 
     cout << "Sum of adjacent elements: " << sum_adjacent << "\n";
 
+    // Symmetric sum (sum of the first and last, followed by the sum of the second and second-to-last etc.)
+
+    cout << "\n";
+    int sum_symmetric = 0;
+    it_start = container.cbegin();
+    it_end = container.cend();
+    auto mid_container = it_start + (it_end - it_start) / 2;
+
+     if (container.size() % 2 != 0){
+        sum_symmetric += *mid_container;
+    }  
+
+    // Idea for below loop, we need a stiff begin iterator that will be added to 
+    // magic iterator arithmetic that it responsible for going from the end of the vector to the beginning
+    //         cout << *(v1.cbegin() + ((end - beg) - 1)) << endl;
+    // GREAT!
+
+    for (; it_start !=  mid_container && it_start != it_end; it_start++){
+
+        cout << *it_start << " + " << *(it_start + 1) << " = " << *it_start + *(it_start + 1) << "\n";
+        
+        sum_symmetric += *it_start + *( (it_end - it_start) + ); 
+
+    }
+
+    
+
+
+
 
     return 0;
 }
