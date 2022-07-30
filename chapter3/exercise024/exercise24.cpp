@@ -21,7 +21,7 @@ int main(){
     int input_int;
     std::vector<int> container;
 
-    std::cout << "Please enter your integers to be held by container vector<int>. Press Ctrl + D to stop the input: \n";
+    std::cout << "Please enter your integers to be held by container vector<int>. Press Enter, then Ctrl + D to stop the input: \n";
     while (cin >> input_int){
         container.push_back(input_int);
     } 
@@ -36,14 +36,13 @@ int main(){
         return 0;
     }
 
-    cout << "\n";
     auto it_start = container.cbegin();
     auto it_end = container.cend();
     int sum_adjacent = 0;
-
+    cout << "\n";
     // Sum of adjacent elements of std::vector<int> using iterators
 
-
+    
     for (;(it_start + 1) != it_end && it_start != it_end; ++it_start){
 
         cout << *it_start << " + " << *(it_start + 1) << " = " << *it_start + *(it_start + 1) << "\n";
@@ -51,7 +50,7 @@ int main(){
 
     }
 
-    cout << "Sum of adjacent elements: " << sum_adjacent << "\n";
+    cout << "Sum of adjacent elements: " << sum_adjacent << "\n"; 
 
     // Symmetric sum (sum of the first and last, followed by the sum of the second and second-to-last etc.)
 
@@ -60,28 +59,29 @@ int main(){
     it_start = container.cbegin();
     it_end = container.cend();
     auto mid_container = it_start + (it_end - it_start) / 2;
+    cout << "mid_container is: " << *mid_container << "\n";
 
      if (container.size() % 2 != 0){
         sum_symmetric += *mid_container;
     }  
 
     // Idea for below loop, we need a stiff begin iterator that will be added to 
-    // magic iterator arithmetic that it responsible for going from the end of the vector to the beginning
+    // magic iterator arithmetic that is responsible for going from the end of vector to the beginning
     //         cout << *(v1.cbegin() + ((end - beg) - 1)) << endl;
     // GREAT!
+    //  1 2 3 4 5
+    // 1 2 3 4 5 6
 
     for (; it_start !=  mid_container && it_start != it_end; it_start++){
 
-        cout << *it_start << " + " << *(it_start + 1) << " = " << *it_start + *(it_start + 1) << "\n";
-        
-        sum_symmetric += *it_start + *( (it_end - it_start) + ); 
+        cout << *it_start << " + " << *(container.cbegin() + ((it_end - it_start) - 1)) << " = " << *it_start + *(container.cbegin() + ((it_end - it_start) - 1)) << "\n";
+        cout << "Current end from the right side is: " << *(it_end - (it_end - it_start)) << "\n";
+        sum_symmetric += *(it_start) + *(container.cbegin() + ((it_end - it_start) - 1)); 
 
     }
 
+    cout << "\n" << "Sum of symmetric elements: " << sum_symmetric << endl;
+
     
-
-
-
-
     return 0;
 }
