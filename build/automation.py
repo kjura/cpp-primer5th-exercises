@@ -1,6 +1,6 @@
 from pathlib import Path
 import sys
-
+import re
 
 MAINDIR = Path.cwd()
 ROOTDIRS = [x for x in Path('.').iterdir() if x.is_dir()]
@@ -18,6 +18,7 @@ def createExerciseDirectory(chapterDirName: str, exDirName: str, ):
 
 def createExerciseFiles(pathToDirExercise: Path, exFileName: str):
 
+
     pathToCreateExFile = pathToDirExercise / exFileName
     pathToCreateReadme = pathToDirExercise / 'README.md'
 
@@ -32,11 +33,29 @@ def createExerciseFiles(pathToDirExercise: Path, exFileName: str):
     else:
         sys.exit("File already exists. Terminating ...")
 
-def getLastExDirNumber():
+
+def validateExerciseFileName(exFileName: str):
+    
+    pattern = '^exercise[0-9]\.[0-9]{1,2}$'
+    prog = re.compile(pattern)
+    result = prog.match(exFileName)
+
+    return result
+
+def validateChapterDirName(dirChapterName: str):
+    pass
+
+def validateExerciseDirName(exDirName: str):
+    pass
+
+
+def getLastExDirNumber(subdirNamesOfChapterDir: str):
     pass
 
 
 def main():
+
+    
     createExerciseDir = createExerciseDirectory('chapter1', 'exercise.1.44')
     createExerciseFiles(createExerciseDir, 'exercise.1.44.cpp')
 
@@ -45,8 +64,3 @@ if __name__ == '__main__':
     main()
     print("Main function was run was run")
     print('Outside of main, just a random print')
-
-
-
-
-
