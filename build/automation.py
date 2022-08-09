@@ -32,8 +32,21 @@ def createExerciseFiles(pathToDirExercise: Path, exFileName: str):
     else:
         sys.exit("File already exists. Terminating ...")
 
-    
-    
+def getLastExDirNumber():
+    pass
 
-createExerciseDir = createExerciseDirectory('chapter1', 'exercise.1.44')
-createExerciseFiles(createExerciseDir, 'exercise.1.44.cpp')
+
+def main():
+    createExerciseDir = createExerciseDirectory('chapter1', 'exercise.1.44')
+    createExerciseFiles(createExerciseDir, 'exercise.1.44.cpp')
+
+
+if __name__ == '__main__':
+    main()
+    print("Main function was run was run")
+    print('Outside of main, just a random print')
+
+
+
+
+
