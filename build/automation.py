@@ -61,10 +61,12 @@ def main():
     chapterDirNumber, exerciseDirNumber = sys.argv[1], sys.argv[2]
     exerciseFileNumber = exerciseDirNumber[1:]
 
+    if exerciseFileNumber[0] == '0':
+        exerciseFileNumber = exerciseFileNumber[1:]
+
     createExerciseDir = createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
     createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
 
 
 if __name__ == '__main__':
     main()
-
