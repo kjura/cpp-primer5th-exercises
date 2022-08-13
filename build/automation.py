@@ -58,7 +58,8 @@ def main():
     #if len(sys.argv) != 4:
         #raise AssertionError('automation.py takes only two parameters two run: chapterNumber and exerciseNumber')
 
-    chapterDirNumber, exerciseDirNumber, exerciseFileNumber = sys.argv[1], sys.argv[2], sys.argv[3]
+    chapterDirNumber, exerciseDirNumber = sys.argv[1], sys.argv[2]
+    exerciseFileNumber = exerciseDirNumber[1:]
 
     createExerciseDir = createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
     createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
