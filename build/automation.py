@@ -2,8 +2,8 @@ from pathlib import Path
 import sys
 import re
 
-MAINDIR = Path.cwd()
-ROOTDIRS = [x for x in Path('.').iterdir() if x.is_dir()]
+MAINDIR = Path.cwd().parent
+ROOTDIRS = [x for x in MAINDIR.iterdir() if x.is_dir()]
 
 
 def createExerciseDirectory(chapterDirName: str, exDirName: str, ):
@@ -55,12 +55,15 @@ def getLastExDirNumber(subdirNamesOfChapterDir: str):
 
 def main():
 
-    
-    createExerciseDir = createExerciseDirectory('chapter1', 'exercise.1.44')
-    createExerciseFiles(createExerciseDir, 'exercise.1.44.cpp')
+    #if len(sys.argv) != 4:
+        #raise AssertionError('automation.py takes only two parameters two run: chapterNumber and exerciseNumber')
+
+    chapterDirNumber, exerciseDirNumber, exerciseFileNumber = sys.argv[1], sys.argv[2], sys.argv[3]
+
+    createExerciseDir = createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
+    createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
 
 
 if __name__ == '__main__':
     main()
-    print("Main function was run was run")
-    print('Outside of main, just a random print')
+
