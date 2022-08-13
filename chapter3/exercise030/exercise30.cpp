@@ -19,6 +19,14 @@ using std::vector;
 int main() { 
 
 
+    constexpr size_t array_size = 10;
+    int ia[array_size]; // --> Array of ten ints
+
+    /* --> Error, stars going through  ia[] from index 1 and attempts to 
+    assign ia[10] = 10, but array_size has indices from 0 to 9 */
+    for (size_t ix = 1; ix <= array_size; ++ix){ 
+        ia[ix] = ix; // UB when ia[10] = 10
+    }
     
 
     return 0;
