@@ -1,26 +1,22 @@
 import unittest
+#import build.automation as automation
+#from pathlib import Path
+
 
 class TestAutomationPathlib(unittest.TestCase):
-
-    def test_lengthArgvs(self):
-        pass
-
-    def test_inputFormatArgvs(self):
-        pass
-
-    def test_createExerciseDirectory(self):
-        pass
-
-    def createExerciseFiles(self):
-        pass
+    pass
 
 
 class TestAutomationMain(unittest.TestCase):
+    
     pass
-
 
 class TestAutomationRegexFunctions(unittest.TestCase):
     pass
 
+
 if __name__ == '__main__':
-    unittest.main()
+    import sys
+    print('test_automation sys path arg')
+    print(sys.path, sep='\n')
+    #unittest.main()
