@@ -10,7 +10,19 @@ using std::endl;
 
 int main()
 {
-    
+    int arrayOfTenInts[10];
+    cout << "\n";
+    for (size_t i = 0; i != 10; i++){
+        arrayOfTenInts[i] = i;
+        cout << "Index: " << i << " Value: arrayOfTenInts[" << i << "] = " << arrayOfTenInts[i] << "\n";
+    }
+
+    /*for (auto e : arrayOfTenInts){
+        cout << e << " ";
+    }*/
+
+
+    cout << endl;
 
     return 0;
 }
