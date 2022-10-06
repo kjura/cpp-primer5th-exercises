@@ -11,8 +11,14 @@ using std::endl;
 int main()
 {
 
+    int int_arr[] = {0, 1, 2, 3, 4, 5};
+    std::vector<int> ivec(std::begin(int_arr), std::end(int_arr));
 
+    for (auto e : ivec){
+        std::cout << e << "\n";
+    }
 
+    std::cout << std::endl;
 
     return 0;
 }
