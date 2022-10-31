@@ -22,7 +22,7 @@ int main()
         }
         cout << "\n";
     } 
-    cout << "\n\n";
+    cout << "\n";
     /*USING ORDINARY FOR LOOP WITH SUBSCRIPTS*/
 
 
@@ -32,19 +32,18 @@ int main()
         }
         cout << "\n";
     }
-
+    cout << "\n";
 
     /*USING ORDINARY FOR LOOP WITH POINTERS*/
 
+
+    for (int (*startRow)[4] = std::begin(ia); startRow != std::end(ia); ++startRow){
+        for(int *startCol = *startRow; startCol != std::end(*startRow); ++startCol){
+            cout << *startCol << " ";
+        }
+        cout << "\n";
+    }
     
-
-    // for (){
-    //     for(){
-
-    //     }
-    // }
-
-
 
     return 0;
 }
