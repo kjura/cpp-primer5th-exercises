@@ -11,8 +11,11 @@ using std::endl;
 int main()
 {
 
-    
+    // * vec.begin() Order of evaluation: member selector ----> function call --> dereference
+    // ( * ( (vec.begin) () ) )
 
+    // * vec.begin() + 1 Order of evaluation: member selector ----> function call --> dereference --> unary plus
+    // ( ( * ( (vec.begin) () ) ) + 1 )
 
     return 0;
 }
