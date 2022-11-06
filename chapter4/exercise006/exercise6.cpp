@@ -11,7 +11,16 @@ using std::endl;
 int main()
 {
 
+    int n;
+    std::cout << "Please input your integer: ";
+    std::cin >> n;
 
+    if (n % 2){
+        cout << "Your integer " << n << " is odd\n";
+    }
+    else{
+        cout << "Your integer " << n << " is even\n"; 
+    }
 
 
     return 0;
