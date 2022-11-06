@@ -11,7 +11,9 @@ using std::endl;
 int main()
 {
 
-    
+    // With parentheses ==> (5 + ((10 * 20) / 2)) = 105
+
+    cout << 5 + 10 * 20 / 2 << "\n"; // prints 105
 
 
     return 0;
