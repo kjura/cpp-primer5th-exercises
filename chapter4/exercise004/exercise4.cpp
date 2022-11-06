@@ -11,7 +11,14 @@ using std::endl;
 int main()
 {
 
+    // 12 / 3 * 4 + 5 * 15 + 24 % 4 / 2
 
+    // Parents ->      ( ( ( (12 / 3) * 4)  + (5 * 15) )  + ( (24 % 4) / 2) ) = 91
+
+
+    auto myExpr = 12 / 3 * 4 + 5 * 15 + 24 % 4 / 2;
+
+    cout << myExpr << endl; // will print 91
 
 
     return 0;
