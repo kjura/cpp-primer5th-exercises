@@ -53,6 +53,12 @@ def getLastExDirNumber(subdirNamesOfChapterDir: str):
     pass
 
 
+def createChapterDir():
+    #TODO Create chapter dir
+    #TODO Check if the dir exists, if true -> omit dir creation, if not -> create
+    pass
+
+
 def main():
 
     #if len(sys.argv) != 4:
@@ -65,8 +71,15 @@ def main():
         exerciseFileNumber = exerciseFileNumber[1:]
 
     createExerciseDir = createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
-    createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
 
+    # TODO Delete the the old logic (the one that does not use template to create a new file, it created a blank file)
+    # took longer to set it up a new exercise 
+    # createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
+
+    with open(MAINDIR / 'build' / 'cppNewExTemplate.cpp') as templateFile:
+        with open(MAINDIR / f'chapter{chapterDirNumber}' / f'exercise{exerciseDirNumber}' / f'exercise{exerciseFileNumber}.cpp', "w") as exerciseFile:
+            for line in templateFile:
+                exerciseFile.write(line) 
 
 if __name__ == '__main__':
     main()
