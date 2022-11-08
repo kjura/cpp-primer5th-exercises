@@ -11,7 +11,13 @@ using std::endl;
 int main()
 {
 
+    /*
     
+    Evaluation of:
+        logical AND --> The right side of logical AND is evaluated iff the left side is true
+        logical OR --> The right side of logical OR is evaluated iff the left side is False
+        equality operator (==) --> Order of evaluation is undefined
+    */ 
 
 
     return 0;
