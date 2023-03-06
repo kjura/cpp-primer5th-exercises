@@ -14,7 +14,12 @@ using std::string;
 int main()
 {
 
+    int i = 5;
+    double d = 5.0;
 
+    i = i * static_cast<double>(d);
+
+    cout << i << endl;
 
 
     return 0;
