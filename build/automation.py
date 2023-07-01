@@ -16,12 +16,16 @@ def createExerciseDirectory(chapterDirName: str, exDirName: str, ):
     else:
         sys.exit("Directory already exists. Terminating ...")
 
-def createReadmeFile(pathToDirExercise: Path):
+def createReadmeAndIO(pathToDirExercise: Path):
 
     pathToCreateReadme = pathToDirExercise / 'README.md'
+    pathToCreateInput = pathToDirExercise / 'input.txt'
+    pathToCreateOutput = pathToDirExercise / 'output.txt'
     
     if not pathToCreateReadme.exists():
         pathToCreateReadme.touch()
+        pathToCreateInput.touch()
+        pathToCreateOutput.touch()
     else:
         sys.exit("File already exists. Terminating ...")
 
@@ -62,19 +66,19 @@ def main():
     if exerciseFileNumber[0] == '0':
         exerciseFileNumber = exerciseFileNumber[1:]
 
-    #createExerciseDir = createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
+    createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
     
 
     # TODO Delete the the old logic (the one that does not use template to create a new file, it created a blank file)
     # took longer to set it up a new exercise 
-    # createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
+    #createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
 
     with open(MAINDIR / 'build' / 'cppNewExTemplate.cpp') as templateFile:
         with open(MAINDIR / f'chapter{chapterDirNumber}' / f'exercise{exerciseDirNumber}' / f'exercise{exerciseFileNumber}.cpp', "w") as exerciseFile:
             for line in templateFile:
                 exerciseFile.write(line) 
     
-    createReadmeFile(MAINDIR / f'chapter{chapterDirNumber}' / f'exercise{exerciseDirNumber}')
+    createReadmeAndIO(MAINDIR / f'chapter{chapterDirNumber}' / f'exercise{exerciseDirNumber}')
 
 if __name__ == '__main__':
     main()
