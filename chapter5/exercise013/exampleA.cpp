@@ -17,8 +17,22 @@ using std::cin;
 int main()
 {
 
+    // Common error: No break; statement in switch cases
+    // The statement falls through and may give unexpected results
+    // Fix: put break;
 
+    unsigned aCnt = 0, eCnt = 0, iouCnt = 0;
+    char ch = next_text();
+    switch (ch) {
+        case 'a' : 
+            aCnt++;
+            break;
+        case 'e' : 
+            eCnt++;
+            break;
+        default : 
+            iouCnt++;
+            break;
+    }
 
-
-    return 0;
 }
