@@ -18,6 +18,12 @@ using std::cin;
 int main()
 {
 
+    /* The program will not work if there is an equal number of duplicates 
+    
+    Example: cow cow cat cat dog dog
+    
+     */
+
     string input {};
     vector<string> data {};
 
@@ -57,42 +63,11 @@ int main()
     }
 
     if (outer_counter == 1){
-        max_dup = "No duplicates";
-        outer_counter = 1;
+        cout << "No duplicates" << endl;
     }
-
-    cout << max_dup << ": " << outer_counter << endl;
-
-
-    // for (; begin_outer_data != end_outer_data; ++begin_outer_data){
-
-    //     //cout << "Outer loop points to " << std::addressof(*begin_outer_data) << "\n";
-    //     //cout << "Outer loop holds: " << *begin_outer_data << "\n";
-
-    //     for (auto begin_inner_data {data.begin()}; begin_inner_data != end_outer_data; ++begin_inner_data){
-
-    //         if (std::addressof(*begin_inner_data) != std::addressof(*begin_outer_data)){
-    //             if (*begin_outer_data == *begin_inner_data){
-    //                 ++inner_counter;
-    //             }
-    //         }
-
-    //         //cout << *begin_inner_data << " "; 
-
-    //         //cout << "Inner loop points to " << std::addressof(*begin_inner_data) << "\n";
-    //     }
-
-    //     if (inner_counter > outer_counter){
-    //         outer_counter = inner_counter;
-    //         inner_counter = 0;
-    //         max_dup = *begin_outer_data;
-    //     }
-
-    //     //cout << "\n";
-    //     //cout << "Next iteration\n";
-
-    // }
-
+    else {
+        cout << max_dup << ": " << outer_counter << endl;
+    }
 
 
     return 0;
