@@ -1,7 +1,7 @@
 Enter your text: 
 Vowel count:
-a: 0
-e: 2
-i: 0
+a: 2
+e: 6
+i: 3
 o: 4
-u: 0
+u: 3

@@ -20,26 +20,38 @@ int main()
     cout << "Enter your text: ";
     cout << "\n";
     unsigned int a_count = 0, e_count = 0, i_count = 0, o_count = 0, u_count = 0;
+    unsigned int tab_count = 0, space_count = 0, newline_count = 0;
     char my_text;
-    while (cin >> my_text){
-        if (my_text == 'a'){
+
+    while (cin.get(my_text)){
+
+        if (sign == 'a' or sign == 'A'){
             ++a_count;
         }
-        if (my_text == 'e')
+        if (sign == 'e' or sign == 'E')
         {
             ++e_count;
         }
-        if (my_text == 'i')
+        if (sign == 'i' or sign == 'I')
         {
             ++i_count;
         }
-        if (my_text == 'o')
+        if (sign == 'o' or sign == 'O')
         {
             ++o_count;
         }
-        if (my_text == 'u')
+        if (sign == 'u' or sign == 'U')
         {
             ++u_count;
+        }
+        if (sign == '\n'){
+            ++newline_count;
+        }
+        if (sign == '\t'){
+            ++tab_count;
+        }
+        if (sign == ' '){
+            ++space_count;
         }
         
     }
@@ -50,7 +62,13 @@ int main()
          << "i: " << i_count << "\n"
          << "o: " << o_count << "\n"
          << "u: " << u_count << "\n"
+         << "tab character: " << tab_count << "\n"
+         << "newline character: " << newline_count << "\n"
+         << "space character: " << space_count << "\n"
          ;
+
+         // Getline probably(?) does not copy '\n'
+         // Use "" --> https://stackoverflow.com/a/64943053
 
     return 0;
 }
