@@ -18,9 +18,11 @@ using std::cin;
 int main()
 {
 
-    
-    vector<int> vector_a = {0, 1, 1, 2};
-    vector<int> vector_b = {0, 1, 0, 2, 3, 5, 8}; 
+    // Example input
+    // Stil haven't figured it out how to keep a sane logic to input two lines in terminal to seperate variables
+    // Damn :(
+    vector<int> vector_a =  {0, 1, 1, 2}; 
+    vector<int> vector_b = {0, 1, 1, 2, 3, 5, 8};
 
     unsigned int threshold {};
     if (vector_a.size() >= vector_b.size()){
@@ -38,8 +40,6 @@ int main()
     }
 
     cout << "True" << "\n";
-
-    
 
     return 0;
 }
