@@ -1,0 +1,6 @@
+Provide input for vector A
+Provide input for vector B
+Vector a
+
+Vector b
+
