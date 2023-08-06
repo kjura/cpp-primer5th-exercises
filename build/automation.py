@@ -6,78 +6,62 @@ MAINDIR = Path.cwd().parent
 ROOTDIRS = [x for x in MAINDIR.iterdir() if x.is_dir()]
 
 
-def createExerciseDirectory(chapterDirName: str, exDirName: str, ):
+def createChapterDirectory(chapterDirName: str) -> None:
+    
+    pathToDirChapter = MAINDIR / chapterDirName
+    # If we start a new chapter, create a directory chapter{number} incpp-primer5th-exercises
+    if not pathToDirChapter.exists():
+        pathToDirChapter.mkdir()
+    # If chapter already exists, do nothing, directory exists so wait for createExerciseDirectory() function call
+    else:
+        pass 
+
+def createExerciseDirectory(chapterDirName: str, exDirName: str) -> None:
 
     pathToDirExercise = MAINDIR / chapterDirName / exDirName
-
+    # If we create a new exercise, create a directory for it
     if not pathToDirExercise.exists():
         pathToDirExercise.mkdir()
-        return pathToDirExercise
+    # If an exercise exists, abort the program and do not create file templates later on
     else:
-        sys.exit("Directory already exists. Terminating ...")
+        sys.exit(f"Directory {exDirName} already exists. Terminating ...")
 
 def createReadmeAndIO(pathToDirExercise: Path):
-
+    # Create Path objects for files to be created
     pathToCreateReadme = pathToDirExercise / 'README.md'
     pathToCreateInput = pathToDirExercise / 'input.txt'
     pathToCreateOutput = pathToDirExercise / 'output.txt'
     
+    # Use touch to create README, input.txt and output.txt
     if not pathToCreateReadme.exists():
         pathToCreateReadme.touch()
         pathToCreateInput.touch()
         pathToCreateOutput.touch()
+    # If files alread exist, abort the program
     else:
         sys.exit("File already exists. Terminating ...")
 
-
-def validateExerciseFileName(exFileName: str):
-    
-    pattern = '^exercise[0-9]\.[0-9]{1,2}$'
-    prog = re.compile(pattern)
-    result = prog.match(exFileName)
-
-    return result
-
-def validateChapterDirName(dirChapterName: str):
-    pass
-
-def validateExerciseDirName(exDirName: str):
-    pass
-
-
-def getLastExDirNumber(subdirNamesOfChapterDir: str):
-    pass
-
-
-def createChapterDir():
-    #TODO Create chapter dir
-    #TODO Check if the dir exists, if true -> omit dir creation, if not -> create
-    pass
-
-
 def main():
 
-    #if len(sys.argv) != 4:
-        #raise AssertionError('automation.py takes only two parameters two run: chapterNumber and exerciseNumber')
-
+    # Get input parameters
     chapterDirNumber, exerciseDirNumber = sys.argv[1], sys.argv[2]
+    # 
     exerciseFileNumber = exerciseDirNumber[1:]
 
     if exerciseFileNumber[0] == '0':
         exerciseFileNumber = exerciseFileNumber[1:]
 
+    createChapterDirectory(f'chapter{chapterDirNumber}')
     createExerciseDirectory(f'chapter{chapterDirNumber}', f'exercise{exerciseDirNumber}')
     
-
-    # TODO Delete the the old logic (the one that does not use template to create a new file, it created a blank file)
-    # took longer to set it up a new exercise 
-    #createExerciseFiles(createExerciseDir, f'exercise{exerciseFileNumber}.cpp')
-
+    # Copy a template cppNewExTemplate.cpp from build directory and create a new
+    # file inside the specified directory with the template content 
     with open(MAINDIR / 'build' / 'cppNewExTemplate.cpp') as templateFile:
         with open(MAINDIR / f'chapter{chapterDirNumber}' / f'exercise{exerciseDirNumber}' / f'exercise{exerciseFileNumber}.cpp', "w") as exerciseFile:
             for line in templateFile:
                 exerciseFile.write(line) 
     
+    # Creatte README.md, input.txt and output.txt
     createReadmeAndIO(MAINDIR / f'chapter{chapterDirNumber}' / f'exercise{exerciseDirNumber}')
 
 if __name__ == '__main__':
