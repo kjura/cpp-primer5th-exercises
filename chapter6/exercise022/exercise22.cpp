@@ -33,9 +33,10 @@ int main()
     int* ptr_b = &b;
     int** ptr_to_ptr_a = &ptr_a;
     int** ptr_to_ptr_b = &ptr_b;
-    cout << "ptr_a=" << ptr_a << " and " << "ptr_b=" << ptr_b << "\n";
+    cout << "Before swapping ptr_a=" << ptr_a << " and " << "ptr_b=" << ptr_b << "\n";
     cout << "Pointer to pointer to a is " << ptr_to_ptr_a << " and " << "Pointer to pointer to b is" << ptr_to_ptr_b << "\n";
     swap(ptr_to_ptr_a, ptr_to_ptr_b);
+    cout << "After swapping: " << "ptr_a=" << ptr_a << " and " << "ptr_b=" << ptr_b << "\n";
 
 
     return 0;
