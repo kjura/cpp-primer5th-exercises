@@ -36,7 +36,13 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask": "WINDOWS C++: MinGW-w64 build",
+            "presentation": {
+                "hidden": true,
+                "group": "",
+                "order": 1
+            }
         }
     ]
 }
