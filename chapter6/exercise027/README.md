@@ -1,0 +1,1 @@
+Exercise 6.27: Write a function that takes an ```initializer_list<int>``` and produces the sum of the elements in the list.
