@@ -31,6 +31,24 @@ void recur(const vector<int>& vec, vector<int>::size_type n){
 }
 
 
+// Is below possible? Or not :(?
+
+
+// void recur_original_order(const vector<int>& vec, vector<int>::size_type n=0){
+
+//     if (n < vec.size()){
+//         cout << vec[n] << "\n";
+//         recur(vec, (++n));
+//     }
+//     else{
+
+//     }
+// }
+
+
+// Clever solution: use iterators! beg and end and progress by one every iteration until one-past-the end is hit
+
+
 int main()
 {
     cout << "Please provide integers seperated by space to push to the vector ...\n";
@@ -41,7 +59,7 @@ int main()
     }
     std::reverse(container.begin(), container.end());
     recur(container, container.size()); // It works but from other side (reversing the vector)
-    // Possible solution of course, reverse the vector
+    // Possible solution of course, reverse the vector (iteratos for container! Also! Thanks internet!)
 
 
     return 0;
