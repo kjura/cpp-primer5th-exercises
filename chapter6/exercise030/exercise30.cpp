@@ -46,7 +46,7 @@ int main()
     /*   ERROR MESSAGE FOR THE ABOVE CODE
     
      error: return-statement with no value, in function returning 'bool' [-fpermissive]
-   31 |             return; // error #1: no return value; compiler should detect this error
+   31 |             return;
       |             ^~~~~~
     error: control reaches end of non-void function [-Werror=return-type]
    39 | }
@@ -54,11 +54,18 @@ int main()
     
     */
 
-    // cout << "Provide two strings seperated by a space ...\n";
-    // string left{};
-    // string right{};
-    // cin >> left >> right;
+
+    /*
+    ALSOOOOOOOOOOOOOOOOOOO THIS if no return will be found later on
     
+    /home/jakub/Public/cpp-primer5th-exercises/playground/sandbox.cpp:31:1: error: control reaches end of non-void function [-Werror=return-type]
+   31 | }
+      | ^
+    cc1plus: all warnings being treated as errors
+    
+     */
+
+
     str_subrange("Jakub", "JurczakJakubJurczak");
 
 
