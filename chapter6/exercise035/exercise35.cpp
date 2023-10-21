@@ -16,10 +16,10 @@ using std::cin;
 
 int factorial (int val){
     if (val > 1){
-        return factorial(val - 1) * val;
-        // what if factorial( (val--) - 1) * val instead?
-        // Ten val inside factorial is different than the val we use outside of a function call
-        // For example factorial(((val=4)--) - 1) * val <====> factorial(4 - 1) * 3 instead of factorial(4 - 1) * 4
+        return factorial(val--) * val; // Confirmed UB
+
+        // The order of evaluation is arbitrary (UB)
+        // In arithmetic expressions see: https://en.cppreference.com/w/cpp/language/eval_order
     }
     return 1;
 }
@@ -27,21 +27,13 @@ int factorial (int val){
 int main()
 {
 
-    /* factorial((val--) - 1) * val
-    
-    factorial(4) --> factorial(3) * 3 --> factorial(2) * 2 --> factorial(1) * 1 --> 1
+    /*
 
-    3 * 2 * 1 * 1 = 6
+    The program is corrupted since the very start, this is Undefined Behaviour (order of evaluation for multiplication "*" and "--)
 
-    The program would contain a bug and the results would not be true for any number
+    */
 
-
-    NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!
-
-
-    The program is corrupted since the very start, this is Undefined Behaviour (order of evaluation for multiplication "*")
-
-     */
+    factorial(6);
 
 
     return 0;
