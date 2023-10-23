@@ -3,7 +3,6 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
-#include <cassert>
 
 // g++ -std=c++20 -pedantic -Wall -Wextra -Werror -Wshadow -Wsign-conversion -g sandbox.cpp  -o sandbox
 // g++ -std=c++20 -pedantic -Wall -Wextra -Wsign-conversion -g sandbox.cpp -o sandbox
@@ -18,9 +17,19 @@ using std::cin;
 
 void recur(const vector<int>& vec, vector<int>::size_type n){
 
+    // Need to compile with g++ -std=c++20 exercise47.cpp -o exercise47
+    // AND NOT with: g++ -std=c++20 exercise47.cpp -o exercise47 -D NDEBUG
+    // Because with -D NDEBUG we DEFINE NDEBUG via compiler command
+    // And here we use if NOT defined
+    #ifndef NDEBUG
+    
+    cout << "The vector size in function " << __func__ << " thas is run in the file " << __FILE__ " is " << vec.size() << "\n";
+
+    #endif
+
     
     if (n > 1){
-    cout << vec[n - 1] << " ";
+    cout << vec[n - 1] << "\n";
     return recur(vec, (n - 1)); // do not pass one-past-end index, first call n - 1 = size - 1 so no invalidation
 
     }
@@ -34,16 +43,10 @@ void recur(const vector<int>& vec, vector<int>::size_type n){
 int main()
 {
     // cout << "Please provide integers seperated by space to push to the vector ...\n";
-    // vector<int> container {};
-    // int input {};
-    // while (cin >> input){
-    //     container.push_back(input);
-    // }
-    // std::reverse(container.begin(), container.end());
-    // recur(container, container.size());
+    vector<int> container {1, 2, 3, 4, 5};
+    std::reverse(container.begin(), container.end());
+    recur(container, container.size());
 
-    assert(5 == 3);
-    cout << "After assert" << endl;
 
     return 0;
 }
