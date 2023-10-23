@@ -1,0 +1,1 @@
+Exercise 6.49: What is a candidate function? What is a viable function?
