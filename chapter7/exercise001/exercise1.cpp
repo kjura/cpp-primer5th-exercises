@@ -8,6 +8,7 @@
 // <br />
 // PLACEHOLDEREXERCISENAME < input.txt > output.txt
 // PLACEHOLDEREXERCISENAME ./exercise5 < input.txt >> output.txt
+// Redirection in powershell  Get-Content .\input.txt | .\<YOUREXERCISENAME>>.exe
 using std::cout;
 using std::endl;
 using std::vector;
@@ -32,22 +33,24 @@ int main()
         // Calculate the revenue for the first transaction
         total.revenue = total.units_sold * price;
 
-        // Read the next transactions
+        // Read next transactions
         Sales_data trans;
         while (cin >> trans.bookNo >> trans.units_sold >> price){
             // If we're still processing the same book, update revenue
             if (trans.bookNo == total.bookNo){
                 total.units_sold += trans.units_sold;
-                total.revenue += trans.revenue;
+                total.revenue += trans.units_sold * price;
             }
             else {
                 // Print results for the previous book before processing the next one
                 cout << total.bookNo << " " << total.units_sold << " " << total.revenue << " " << (total.revenue / total.units_sold) << "\n";
                 // Reste total revenue and total unit sold to prepare variables to hold data for the next book
-                total.revenue = 0.0;
-                total.units_sold = 0;
+                total.revenue = trans.units_sold * price;
+                total.units_sold = trans.units_sold;
+                total.bookNo = trans.bookNo;
             }
         }
+        cout << total.bookNo << " " << total.units_sold << " " << total.revenue << " " << (total.revenue / total.units_sold) << "\n";
     }
 
 

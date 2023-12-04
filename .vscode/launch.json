@@ -19,7 +19,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
+            "args": ["<", "${fileDirname}/input.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
