@@ -50,6 +50,7 @@ int main()
                 total.bookNo = trans.bookNo;
             }
         }
+        
         cout << total.bookNo << " " << total.units_sold << " " << total.revenue << " " << (total.revenue / total.units_sold) << "\n";
     }
 
