@@ -19,7 +19,6 @@ struct Sales_data {
 
     string isbn() const {return bookNo;}
     Sales_data& combine(const Sales_data&);
-    double avg_price() const;
 
     std::string bookNo;
     unsigned units_sold = 5;
@@ -27,35 +26,14 @@ struct Sales_data {
 
 };
 
-struct Date
-{
-    int year {};
-    int month {};
-    int day {};
-
-    void incrementDay()
-    {
-        ++day;
-    }
-
-    void print() const {
-        cout << year << "." << month << "." << day << "\n";
-        //cout << this->year << "." << this->month << "." << this->day << "\n";
-    }
+Sales_data& Sales_data::combine(const Sales_data& rhs){
+    units_sold += rhs.units_sold;
+    revenue += rhs.revenue;
+    return *this;
 };
 
 int main()
 {
-    const Date today { 2020, 10, 14 }; // const
-
-    // today.day += 1;        // compile error: can't modify member of const object
-    // today.incrementDay();  // compile error: can't call member function that modifies member of const object
-    today.print(); // Date::print(&today)
-    today.incrementDay();
-    today.print();
-    [[maybe_unused]] int a = 69;
-    [[maybe_unused]] int const* a_ptr  = &a;
-
 
 
     return 0;
