@@ -21,7 +21,7 @@ struct Sales_data {
     string isbn() const {return bookNo;}
     Sales_data& combine(const Sales_data&);
     double get_avg_price() const;
-    void print_object(const Sales_data&);
+    void print_object();
     double get_avg_price();
     // void print_
 
@@ -40,7 +40,7 @@ double Sales_data::get_avg_price(){
     else{
         return 0.0;
     }
-}
+};
 
 Sales_data& Sales_data::combine(const Sales_data& rhs){
     units_sold += rhs.units_sold;
@@ -48,23 +48,18 @@ Sales_data& Sales_data::combine(const Sales_data& rhs){
     return *this;
 };
 
-void Sales_data::print_object(const Sales_data& my_instance){
-    cout << my_instance.bookNo << " " << my_instance.units_sold << " " << my_instance.revenue << endl;
+
+void Sales_data::print_object(){
+    cout << bookNo << " " << units_sold << " " << revenue << get_avg_price();
 };
 
-string& my_concat(string& my_word){
-    return my_word + " haha";
-}
 
 int main()
 {
 
-    string napis = "HelloWorld";
-    string new_napis = my_concat(napis);
 
 
-
-/*     Sales_data total;
+    Sales_data total;
     if (cin >> total.bookNo >> total.units_sold >> total.price){
         // Calculate the revenue for the first transaction
         total.revenue = total.units_sold * total.price;
@@ -77,9 +72,12 @@ int main()
             }
             else{
                 cout << total.bookNo << " " << total.units_sold << " " << total.revenue << " " << (total.revenue / total.units_sold) << "\n";
+                total = trans;
             }
         }
-    } */
+
+        total.print_object();
+    }
 
     return 0;
 }

@@ -8,6 +8,7 @@
 // <br />
 // PLACEHOLDEREXERCISENAME < input.txt > output.txt
 // PLACEHOLDEREXERCISENAME ./exercise5 < input.txt >> output.txt
+// Redirection in powershell  Get-Content .\input.txt | .\<YOUREXERCISENAME>>.exe
 using std::cout;
 using std::endl;
 using std::vector;
