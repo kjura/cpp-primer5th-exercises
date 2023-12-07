@@ -8,6 +8,7 @@
 // <br />
 // PLACEHOLDEREXERCISENAME < input.txt > output.txt
 // PLACEHOLDEREXERCISENAME ./exercise5 < input.txt >> output.txt
+// Redirection in powershell  Get-Content .\input.txt | .\<YOUREXERCISENAME>>.exe
 using std::cout;
 using std::endl;
 using std::vector;
@@ -50,7 +51,7 @@ Sales_data& Sales_data::combine(const Sales_data& rhs){
 
 
 void Sales_data::print_object(){
-    cout << bookNo << " " << units_sold << " " << revenue << get_avg_price();
+    cout << bookNo << " " << units_sold << " " << revenue << " " << get_avg_price();
 };
 
 
@@ -67,6 +68,7 @@ int main()
         // Read next transactions
         Sales_data trans;
         while (cin >> trans.bookNo >> trans.units_sold >> trans.price){
+            trans.revenue = trans.price * trans.units_sold;
             if (total.bookNo == trans.bookNo){
                 total.combine(trans);
             }
