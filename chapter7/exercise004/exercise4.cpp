@@ -15,6 +15,11 @@ using std::vector;
 using std::string;
 using std::cin;
 
+struct Person {
+    string name = "PLACEHOLDER";
+    string address = "PLACEHOLDER";
+};
+
 int main()
 {
 

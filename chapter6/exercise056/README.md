@@ -1,0 +1,1 @@
+Exercise 6.56: Call each element in the ```vector``` and print their result.

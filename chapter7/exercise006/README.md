@@ -1,0 +1,1 @@
+Exercise 7.6: Define your own versions of the ```add```, ```read```, and ```print``` functions.
