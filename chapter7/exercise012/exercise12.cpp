@@ -20,17 +20,12 @@ struct Sales_data {
     // First default constructor (DECLARATION only inside the class body)
     Sales_data();
 
-    // Constructors with initalizers list DEFINITION
-    Sales_data(const string& isbn, unsigned books_sold, double price_for_book) : bookNo(isbn), units_sold(books_sold), revenue(price_for_book * books_sold) {};
+    // declaration of istream constructor:
+    //Sales_data(std::istream& input);
+    // Now, we're changing it to an inside definition
 
+    Sales_data(std::istream& input) {read(input, *this);}
 
-
-    // second one with bookNo being initalized
-    Sales_data(const string& isbn) : bookNo(isbn) {};
-
-
-    // declaration of istream constructor
-    Sales_data(std::istream& input);
 
 
 
@@ -46,12 +41,6 @@ struct Sales_data {
 
 // DEFINITION of default constructor 
 Sales_data::Sales_data() = default;
-
-
-//DEFINITION of istream constructor
-Sales_data::Sales_data(std::istream& input){
-    read(input, *this);
-}
 
 double Sales_data::avg_price() const{
     if (units_sold){
@@ -75,18 +64,8 @@ std::istream& Sales_data::read(std::istream& is, Sales_data& item){
 int main()
 {
 
-    // First, default constructor
-    Sales_data my_default;
-
-    // List initalizer
-    Sales_data long_list_init("a-new-book", 2, 69.69);
-
-    // Again list initalizer but simple
-    Sales_data short_list_init("my-only-isbn");
-
-    // Last one with streams
     Sales_data stream_constructor(cin);
-    
+
 
     return 0;
 }
