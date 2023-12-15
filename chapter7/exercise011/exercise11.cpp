@@ -65,7 +65,9 @@ double Sales_data::avg_price() const{
 std::istream& Sales_data::read(std::istream& is, Sales_data& item){
     
     double price = 0;
+    cout << "Plase provide a book's isbn, units sold and price seperated by spaces " << "\n";
     is >> item.bookNo >> item.units_sold >> price;
+    cout << "Items provided" << "\n";
     item.revenue = price * item.units_sold;
     return is;
 }
@@ -80,10 +82,10 @@ int main()
     Sales_data long_list_init("a-new-book", 2, 69.69);
 
     // Again list initalizer but simple
-    Sales_data("my-only-isbn");
+    Sales_data short_list_init("my-only-isbn");
 
     // Last one with streams
-    Sales_data(cin);
+    Sales_data stream_constructor(cin);
     
 
     return 0;
