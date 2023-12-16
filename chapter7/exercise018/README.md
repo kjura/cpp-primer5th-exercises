@@ -1,0 +1,1 @@
+Exercise 7.18: What is encapsulation? Why is it useful?
