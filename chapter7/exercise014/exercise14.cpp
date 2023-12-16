@@ -17,6 +17,9 @@ using std::cin;
 
 struct Sales_data {
 
+
+    // Anti-pattern
+    // See https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c48-prefer-in-class-initializers-to-member-initializers-in-constructors-for-constant-initializers
     Sales_data(const std::string& bookId="empty",
             unsigned books_sold=69,
             double price=666)
