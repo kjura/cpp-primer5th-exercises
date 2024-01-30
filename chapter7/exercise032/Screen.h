@@ -3,20 +3,10 @@
 
 #include <string>
 
-class Screen;
-//void Winow_mgr::clear(ScreenIndex i);
-
-class Window_mgr {
-
-    public:
-        using ScreenIndex = std::vector<Screen>::size_type;
-        void clear(ScreenIndex i);
-
-    private:
-        std::vector<Screen> screens{Screen(24, 80, ' ')};
-};
-
 class Screen {
+
+    // friend declaration for clear
+    friend void Window_mgr::clear(ScreenIndex i);
 
     public:
         using pos = std::string::size_type;
@@ -30,9 +20,6 @@ class Screen {
         Screen& set(pos r, pos col, char ch);
         Screen& display(std::ostream& os){ do_display(os); return *this; };
         const Screen& display(std::ostream& os) const { do_display(os); return *this; };
-
-        // friend declaration for clear
-        friend void Window_mgr::clear(ScreenIndex i);
     
     private:
         pos cursor {0};
@@ -42,5 +29,4 @@ class Screen {
         void do_display(std::ostream& os) const { os << contents; };
 
 };
-
 #endif

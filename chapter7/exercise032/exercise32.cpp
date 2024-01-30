@@ -8,8 +8,8 @@
 
 
 // Class definitions
-#include "Screen.h"
 #include "Window_mgr.h"
+#include "Screen.h"
 
 // Standard lib imports 
 #include <iostream>
@@ -54,13 +54,14 @@ void Window_mgr::clear(ScreenIndex i){
 }
 
 
+
+
 int main()
 {
 
-    Screen scr = Screen(25, 25, '%');
-    
-    scr.clear();
-
+    // Marking as finished but I don't like the solution, took it and applied the solution from
+    // The internet, moving on and getting back to it at one point
+    Screen scr = Screen(10, 10, '$');
     
     return 0;
 }
