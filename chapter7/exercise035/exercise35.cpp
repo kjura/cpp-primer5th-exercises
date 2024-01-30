@@ -16,64 +16,55 @@ using std::string;
 using std::cin;
 
 
-// using Type = std::string;
-// Type initVal(); // Shadows Type initVal() inside Exercise
 
-// class Exercise {
-//     public:
-//         using Type = double;
-//         Type setVal(Type);
-//         Type initVal(); // which initVal? The public member
-//     private:
-//         int val;
-// };
+// Corrected code
+using Type = std::string; // --> Ok, global scope, Type=doube overwrites only inside Exercise
+Type initVal(); // Shadows Type initVal() inside Exercise
 
-// Type Exercise::setVal(Type parm) {
-//     val = parm + initVal();
-//     return val;
-// }
-
-
-// int height; // defines a name subsequently used inside Screen
-// class Screen {
-//     public:
-//         typedef std::string::size_type pos;
-//         void setHeight(pos);
-//         pos height = 0; // hides the declaration of height in the outer scope
-// };
-
-// Screen::pos verify(Screen::pos);
-// void Screen::setHeight(pos var) {
-//     // var: refers to the parameter
-//     // height: refers to the class member
-//     // verify: refers to the global function
-//     height = verify(var);
-// }
-
-class Person{
+class Exercise {
     public:
-        Person(string n, string s) : name(n), surname(s) {};
-
+        using Type = double; // --> Ok, but this applies only under Exercise namespace
+        Type setVal(Type);
+        Type initVal(); // which initVal? The public member
     private:
-        string name {};
-        string surname {};
+        int val;
+};
+
+Exercise::Type Exercise::initVal(){
+    return 42;
 }
 
-
-string& Person::get_name(){
-    return name; 
-};
-
-string& Person::get_surname(){
-    return surname; 
+Exercise::Type Exercise::setVal(Exercise::Type parm) {
+    val = parm + initVal();
+    return val;
 };
 
 
-int main()
-{
+int main(){
 
-    Person john = Person("John", "Doe");
-    cout << john.get_name() << endl;
+/*  typedef string Type;
+    Type initVal();
+
+    class Exercise {
+        public:
+            typedef double Type;
+            Type setVal(Type);
+            Type initVal(); --> No definition of initVal(), declared inside but not defined error
+        private:
+            int val;
+    };
+
+
+    --> Wrong type for "Type", need to use scope operator to indicate that we want Type=double
+    --> Same with Type parm
+    --> Without it, the compiler thinks that we intend to use using Type = std::string;
+    Type Exercise::setVal(Type parm) { 
+        val = parm + initVal();
+        return val;
+    } */
+
+    [[maybe_unused]] Exercise ex = Exercise();
+    cout << "Hello!" << endl;
 
 
     return 0;
