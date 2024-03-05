@@ -21,7 +21,9 @@ using std::ostream;
 Sales_data::Sales_data(std::istream &is) 
 {
 	// read will read a transaction from is into this object
+	cout << "Called Sales_data(std::istream &is) constructor" << endl;
 	read(is, *this);
+	
 }
 
 double 
@@ -54,6 +56,7 @@ istream&
 read(istream &is, Sales_data &item)
 {
 	double price = 0;
+	cout << "Pass bookNo, units_sold and price" << endl;
 	is >> item.bookNo >> item.units_sold >> price;
 	item.revenue = price * item.units_sold;
 	return is;
@@ -70,11 +73,25 @@ print(ostream &os, const Sales_data &item)
 int main()
 {
 
-    string null_book = "9-999-999999-9";
-    Sales_data item;
-    item.combine(null_book);
+
+	// Doesn't compile, marked explicit for a constructor with one string
+
+    // string null_book = "9-999-999999-9";
+	// Sales_data item("123-456-789", 10, 69.00);
+	// item.combine(null_book); 
 
 
+	/* 
+	
+	Benefits: you cannot hide a conversion, any reviewer will not have to focus if one can implicitly convert
+	to a class type, any conversion would have to be forced by casting or an explicit construction, less chance
+	to introduce bugs
+
+
+	Drawbacks: There would be a need to construct and hold every object we would like to temporarily operate on 
+	when performing an operation on the Sales_data object
+	
+	 */
 
 	return 0;
 }
