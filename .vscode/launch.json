@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Python: Current File",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/build/automation.py",
             "console": "integratedTerminal",
@@ -19,7 +19,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["<", "${fileDirname}/input.txt"],
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -37,12 +37,6 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "WINDOWS C++: MinGW-w64 build",
-            "presentation": {
-                "hidden": true,
-                "group": "",
-                "order": 1
-            }
         }
     ]
 }
