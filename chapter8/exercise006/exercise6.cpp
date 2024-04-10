@@ -21,17 +21,39 @@ struct Sales_data {
     unsigned units_sold = 0;
     double revenue = 0.0;
 
-    std::ifstream& read(std::ifstream& input_file, Sales_data& item);
 };
 
-std::ifstream& Sales_data::read(std::ifstream& input_file, Sales_data& item) {
+std::ifstream& read(std::ifstream& input_file, Sales_data& item) {
+    double price { 0 };
+    input_file >> item.bookNo >> item.units_sold >> price;
+    item.revenue = { price * item.units_sold };
     
+    return input_file;
 }
 
-int main()
+void print(Sales_data& item) {
+    cout << item.bookNo << " " << item.units_sold << " " << item.revenue << "\n";
+}
+
+int main(int argc, char* argv[])
 {
+    if (argc <= 1){
+        std::cerr << "Name of the file was not passed to main, provide the name when running the program\n";
+        return 1;
+    }
 
+    std::string name_of_the_file { argv[1] };
+    std::ifstream input_file { name_of_the_file };
+    if (!input_file) {
+        std::cerr << "Error while reading the file \n";
+        return 2;
+    }
 
+    // List of transactions --> ISBN Units_Sold Price
+    Sales_data my_object {};
+    read()
+    // std::string line_container;
+    
 
 
     return 0;
