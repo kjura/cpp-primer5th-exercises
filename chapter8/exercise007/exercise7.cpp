@@ -46,6 +46,14 @@ std::ifstream& read(std::ifstream& in, Sales_data& item) {
 
 }
 
+std::ofstream& write_output_to_file(std::ofstream& out, const Sales_data& item) {
+    
+    out << item.bookNo << " " << item.units_sold << " " << item.revenue << " " << (item.revenue / item.units_sold);
+
+    return out;
+
+}
+
 void print(const Sales_data& item) {
     cout << item.bookNo << " " << item.units_sold << " " << item.revenue << " " << (item.revenue / item.units_sold) << "\n";
 
@@ -64,13 +72,14 @@ int main(int argc, char* argv[])
     std::string file_name_input { argv[1] };
     std::string file_name_output { argv[2] };
     std::ifstream transactions_file { file_name_input };
+    std::ofstream output_file { file_name_output };
     if (!transactions_file) {
-        std::cerr << "Error while reading the input file \n";
+        std::cerr << "Error while opening the input file \n";
         return 2;
     }
     else {
-        if (!output)file) {
-            std::cerr << "Error while reading the input file \n";
+        if (!output_file) {
+            std::cerr << "Error while opening the output file \n";
             return 3;
         }
     }
@@ -87,13 +96,14 @@ int main(int argc, char* argv[])
             }
             else {
                 // Print results for the previous book before processing the next one
-                print(total);
+                //print(total);
+                write_output_to_file(output_file, total) << "\n";
                 // Reset total revenue and total unit sold to prepare variables to hold data for the next book
                 total = trans;
             }
         }
         
-        print(total);
+        write_output_to_file(output_file, total) << "\n";
     }
 
 
