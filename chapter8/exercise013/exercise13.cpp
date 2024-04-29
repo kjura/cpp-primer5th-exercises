@@ -24,6 +24,34 @@ struct PersonInfo {
     vector<string> phones;
 };
 
+bool valid(const std::string& str) {
+
+    if (str.size() != 9) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
+
+/* 
+
+string str = "kuba"
+string& ref_str = str;
+format (ref_str)
+ */
+
+std::string& format(std::string& str){
+
+    str = "+48" + str;
+    str = str.substr(0, 3) + "-" + str.substr(3, 6) + "-" + str.substr(6, 9);
+
+    return str;
+
+}
+
+
 int main()
 {
 
@@ -50,20 +78,26 @@ int main()
                 badNums << " " << nums; // string in badNums
             } 
             
-            else
-            // ‘‘writes’’ to formatted’s string
-            formatted << " " << format(nums);
+            else {
+                // ‘‘writes’’ to formatted’s string
+                auto temp = format(nums);
+                // formatted << " " << format(nums);
+                formatted << " " << temp;
+            }
+
             }
 
             if (badNums.str().empty()) { // there were no bad numbers
 
                 // print the name
-                cout << entry.name << " " << formatted.str() << endl; // and reformatted numbers
+                cout << entry.name << " " << formatted.str() << "\n"; // and reformatted numbers
 
             }
 
-            else { // otherwise, print the name and bad numbers
-            cerr << "input error: " << entry.name << " invalid number(s) " << badNums.str() << endl;
+            else { 
+                
+                // otherwise, print the name and bad numbers
+                cerr << "input error: " << entry.name << " invalid number(s) " << badNums.str() << "\n";
 
             }
     }
