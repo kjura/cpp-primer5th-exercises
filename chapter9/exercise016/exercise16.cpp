@@ -23,7 +23,7 @@ int main()
 {
 
     list<int> l {  1, 1, 40 };
-    vector<int> v { 1, 1, 41 };
+    vector<int> v { 1, 1, 40, 40, 39 };
 
     auto size_of_l { l.size() };
     auto size_of_v { v.size() };
@@ -31,44 +31,32 @@ int main()
     auto l_beg { l.cbegin() };
     auto v_beg { v.cbegin() };
 
-    if (size_of_l == size_of_v) {
-
-        for (; l_beg != l.cend() && v_beg != v.cend(); ++l_beg, ++v_beg){
-            if ( *l_beg != *v_beg ){
-                cout << "l != v\n";
-                return 0;
-            }
             
+    for (; l_beg != l.cend() && v_beg != v.cend(); ++l_beg, ++v_beg){
+        if ( *l_beg > *v_beg ){
+            cout << "l > v\n";
+            return 0;
+        }
+        else if ( *l_beg < *v_beg ) {
+            cout << "v > l\n";
+            return 0;
         }
 
-        cout << "l == v\n";
-        return 0;
     }
 
+    if (size_of_l > size_of_v) {
+        cout << "l > v\n";
+    }
+    else if (size_of_v > size_of_l) { // Could be also done with iterators, look up jaege's code
+        cout << "v > l\n";
+    }
     else {
-            
-            for (; l_beg != l.cend() && v_beg != v.cend(); ++l_beg, ++v_beg){
-                if ( *l_beg > *v_beg ){
-                    cout << "l > v\n";
-                    return 0;
-                }
-                else if ( *l_beg < *v_beg ) {
-                    cout << "v > l\n";
-                    return 0;
-                }
-    
-            }
+        cout << "v == l\n";
+    }
 
-            if (size_of_l > size_of_v) {
-                cout << "l > v\n";
-            }
-            else {
-                cout << "v > l\n";
-            }
+    return 0;
 
-            return 0;
-
-        }
+        
 
 
     return 0;
