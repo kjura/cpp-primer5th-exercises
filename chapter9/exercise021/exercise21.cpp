@@ -24,15 +24,54 @@ to add elements to a `list` would work if we inserted into a `vector` instead.
 
  */
 
+
+template<typename T>
+void print(T lst){
+    for (auto e : lst) {
+        cout << e << "\n";
+    }
+}
+
 int main()
 {
 
-    std::list<string> lst;
-    auto iter = lst.begin();
-    string word { };
-    while (cin >> word){
-        iter = lst.insert(iter, word); // same as calling push_front
+    // std::list<string> lst;
+    // auto iter = lst.begin();
+    // string word { };
+    // while (cin >> word){
+    //     iter = lst.insert(iter, word); // same as calling push_front
+    // }
+    // print(lst)
+
+
+    std::vector<int> vec;
+    auto iter = vec.begin();
+    int number {  };
+    while (cin >> number){
+        iter = vec.insert(iter, number);
     }
+
+    print(vec);
+
+    /* 
+    
+    ANSWER: No difference in behaviour but there is an underlying difference on implementation level:
+
+
+    Per cpp reference:
+
+    For list => No iterators or references are invalidated.
+
+    For vector => If after the operation the new size() is greater than old capacity() 
+    a reallocation takes place, in which case all iterators (including the end() iterator) and 
+    all references to the elements are invalidated.
+    Otherwise, only the iterators and references before the insertion point remain valid.
+    
+
+    One then must be cautious to avoid references/iterator invalidation
+
+    */
+
 
     return 0;
 }
