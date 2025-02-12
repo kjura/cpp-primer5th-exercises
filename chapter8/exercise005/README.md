@@ -1,0 +1,1 @@
+Exercise 8.5: Rewrite the previous program to store each word in a separate element.

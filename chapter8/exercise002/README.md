@@ -1,0 +1,1 @@
+Exercise 8.2: Test your function by calling it, passing ```cin``` as an argument.
