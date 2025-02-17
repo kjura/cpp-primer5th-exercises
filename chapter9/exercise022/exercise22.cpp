@@ -37,42 +37,42 @@ void print(T container, bool flag = true){
 Assuming iv is a vector of ints, what is wrong with the following
 program? How might you correct the problem(s)?
 
-Initially: 
-
-1. No exit condition, this loops eternally
-2. iv.size() / 2 can throw a warning implicit conversion takes place e.g 5 / 2 -> 2
-3. In iv.insert(iter, 2 * some_val) we do not account for a side effect of iterator invalidation,
-namely, we do not update the iter since it points to the old value
-(but now a new element has been put before iter)
-
 vector<int>::iterator iter = iv.begin(),
-mid = iv.begin() + iv.size()/2;
+mid = iv.begin() + iv.size()/2; -----------> No mid update, since we put new elements, midpoint is calculated wrongly
 while (iter != mid){
     if (*iter == some_val) {
-        iv.insert(iter, 2 * some_val);
+        iv.insert(iter, 2 * some_val); ---------------> We must be careful to avoid UB, iterator invalidation
+        Also, this must be captured to a variable to be able to advance from the new point of view (after insertion)
     }
+        ---------------> No iterator increment, eternal loop
 }
 
 */
 
-
-
 int main()
 {
 
-
-
     int some_val { 4 };
     std::vector<int> iv { 2, 4, 6, 8, 10, 12 };
-    vector<int>::iterator iter = iv.begin(), mid = iv.begin() + std::ssize(iv) / 2; // pointing to iv[3]
+    cout << "Vector before the loop" << "\n";
+    print(iv);
+    vector<int>::iterator iter = iv.begin();
+    auto mid { iv.begin() + (std::ssize(iv) / 2) };
     while (iter != mid){
         if (*iter == some_val) {
-            iv.insert(iter, 2 * some_val);
+            // There's a difference between iter = iv.insert(iter, 2 * some_val); and iv.insert(iter, 2 * some_val); (no assignment)
+            // For the latter, it explodes and does not print anything after the while loop, because you go over the new mid
+            // (and there was iterator invalidation)
+            iter = iv.insert(iter, 2 * some_val); // Insert 2 * some_val BEFORE iter, return the iterator pointing to the inserted value
+            ++iter; // Advance the iterator pointing to the inserted by one to skip it and move forward
+            mid = iv.begin() + (std::ssize(iv) / 2); // We need to update mid because the container size has changed when we have updated the container
+
         }
-        iter++;
+        ++iter; // Again, advance the iterator because we want read another element
     }
 
-    // print(iv);
+    cout << "Vector after the loop" << "\n";
+    print(iv);
 
     return 0;
 }
