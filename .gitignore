@@ -2,3 +2,4 @@ playground/
 build/__pycache__
 cpp_primer_source_code/
 .vscode/
+Catch2/
