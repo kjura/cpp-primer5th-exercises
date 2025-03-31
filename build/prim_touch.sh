@@ -1,2 +1,2 @@
 #!/bin/sh
-python ./automation.py $1 $2
+python3 ./automation.py $1 $2
