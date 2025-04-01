@@ -20,29 +20,96 @@ using std::cin;
 
 /* 
 
+In a nutshell, the code removes even values and duplicates odd ones
+
 std::list<int> -> will not work because operator += (or + is general) is not defined
 std::forward_list<int> -> will not work because insert(), erase() and operator+= are not defined
 
 */
+
+template <typename T>
+void print_container(T& container) 
+{
+    for (const auto& e : container) {
+        cout << e << " ";
+    }
+
+    cout << "\n";
+}
+
+void modify_odd_even(std::list<int>& lst) {
+
+    // {0,1,2,3,4,5,6,7,8,9} ===> 1 1 3 3 5 5 7 7 9 9 
+
+    auto iter = lst.begin(); // call begin, not cbegin because we're changing container_vec
+    
+    while (iter != lst.end()) {
+        if (*iter % 2) { // e.g 5 % 2 = 2 r 1 = 1, so any odd number will turn this if on
+            iter = lst.insert(iter, *iter);
+            iter++;
+            iter++;
+        }
+        // If even number, go to else 
+        else {
+            iter = lst.erase(iter);
+        }
+            
+    }
+}
+
+void modify_odd_even(std::vector<int>& vec) {
+    
+    auto iter = vec.begin(); // call begin, not cbegin because we're changing container_vec
+    
+    while (iter != vec.end()) {
+        if (*iter % 2) { // e.g 5 % 2 = 2 r 1 = 1, so any odd number will turn this if on
+            iter = vec.insert(iter, *iter);  // duplicate the current element
+    
+            iter += 2; // advance past this element and the one inserted before it
+        } else // If even number, go to else
+            iter = vec.erase(iter);          // remove even elements
+            // don't advance the iterator; iter denotes the element after the one we erased
+    
+    }
+
+}
+
+//TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+void modify_odd_even(std::forward_list<int>& flst) {
+
+    // We need to iterators to keep track of what's happening in forward list
+    auto prev = flst.before_begin();
+    auto curr = flst.begin();
+
+    while (curr != flst.end()) {
+        if (*curr % 2) { // e.g 5 % 2 = 2 r 1 = 1, so any odd number will turn this if on
+            curr = flst.erase_after(prev);  // duplicate the current element
+        } else {
+
+            // TODO
+        
+        }
+    }
+
+}
+
 
 int main()
 {
 
     // silly loop to remove even-valued elements and insert a duplicate of odd-valued elements
     
-    std::forward_list<int> vi = {0,1,2,3,4,5,6,7,8,9};
-    auto iter = vi.begin(); // call begin, not cbegin because we're changing vi
-    
-    while (iter != vi.end()) {
-        if (*iter % 2) { // e.g 5 % 2 = 2 r 1 = 1, so any odd number will turn this if on
-            iter = vi.insert(iter, *iter);  // duplicate the current element
-    
-            iter += 2; // advance past this element and the one inserted before it
-        } else // If even number, go to else
-            iter = vi.erase(iter);          // remove even elements
-            // don't advance the iterator; iter denotes the element after the one we erased
-    
-    }
+    std::vector<int> container_vec = {0,1,2,3,4,5,6,7,8,9};
+    std::list<int> container_list = {0,1,2,3,4,5,6,7,8,9};
+    std::forward_list<int> container_forward_list = {0,1,2,3,4,5,6,7,8,9};
+
+    modify_odd_even(container_vec);
+    modify_odd_even(container_list);
+    modify_odd_even(container_forward_list);
+
+    print_container(container_vec);
+    print_container(container_list);
+    print_container(container_forward_list);
 
 
 
