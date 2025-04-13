@@ -74,19 +74,28 @@ void modify_odd_even(std::vector<int>& vec) {
 
 }
 
-//TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
 void modify_odd_even(std::forward_list<int>& flst) {
 
-    // We need to iterators to keep track of what's happening in forward list
+    // We need two iterators to keep track of what's happening in forward list
     auto prev = flst.before_begin();
     auto curr = flst.begin();
 
     while (curr != flst.end()) {
         if (*curr % 2) { // e.g 5 % 2 = 2 r 1 = 1, so any odd number will turn this if on
-            curr = flst.erase_after(prev);  // duplicate the current element
+            prev = flst.insert_after(prev, *curr);  // duplicate the current element
+            ++prev;
+            ++curr;
         } else {
 
-            // TODO
+            curr = flst.erase_after(prev);
+            // No need for ++prev, this would blow out
+            // only element removed has the iterator that is invalidated, prev (or previous iterators are fine ) e.g
+            // elem1 --> elem2 --> elem3 --> elem4
+            // Removing eleme3 changes the value of elem2
+            // elem1 --> elem2 ------------> elem4
+            // but elem2 can stay as prev, no need to increase it
+            // what if increase? Surely there's UB floating around
         
         }
     }
@@ -99,17 +108,28 @@ int main()
 
     // silly loop to remove even-valued elements and insert a duplicate of odd-valued elements
     
-    std::vector<int> container_vec = {0,1,2,3,4,5,6,7,8,9};
-    std::list<int> container_list = {0,1,2,3,4,5,6,7,8,9};
-    std::forward_list<int> container_forward_list = {0,1,2,3,4,5,6,7,8,9};
+    // {0,1,2,3,4,5,6,7,8,9}
 
-    modify_odd_even(container_vec);
-    modify_odd_even(container_list);
-    modify_odd_even(container_forward_list);
 
-    print_container(container_vec);
-    print_container(container_list);
-    print_container(container_forward_list);
+    // std::vector<int> container_vec = {0,1,2,3,4,5,6,7,8,9};
+    // std::list<int> container_list = {0,1,2,3,4,5,6,7,8,9};
+    // std::forward_list<int> container_forward_list = {2, 2, 2, 2, 2, 3, 2, 3, 1};
+
+    // modify_odd_even(container_vec);
+    // modify_odd_even(container_list);
+    // modify_odd_even(container_forward_list);
+
+    // print_container(container_vec);
+    // print_container(container_list);
+    // print_container(container_forward_list);
+
+
+    std::forward_list<int> kuba { 1, 2, 3 };
+    
+    auto haha = kuba.end();
+    haha = kuba.erase_after(haha);
+    // ++haha;
+    // cout << *haha << endl;
 
 
 
