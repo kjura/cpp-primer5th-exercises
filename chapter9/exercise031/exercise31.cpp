@@ -107,30 +107,17 @@ int main()
 {
 
     // silly loop to remove even-valued elements and insert a duplicate of odd-valued elements
-    
-    // {0,1,2,3,4,5,6,7,8,9}
+    std::vector<int> container_vec = {0,1,2,3,4,5,6,7,8,9};
+    std::list<int> container_list = {0,1,2,3,4,5,6,7,8,9};
+    std::forward_list<int> container_forward_list = {0,1,2,3,4,5,6,7,8,9};
 
+    modify_odd_even(container_vec);
+    modify_odd_even(container_list);
+    modify_odd_even(container_forward_list);
 
-    // std::vector<int> container_vec = {0,1,2,3,4,5,6,7,8,9};
-    // std::list<int> container_list = {0,1,2,3,4,5,6,7,8,9};
-    // std::forward_list<int> container_forward_list = {2, 2, 2, 2, 2, 3, 2, 3, 1};
-
-    // modify_odd_even(container_vec);
-    // modify_odd_even(container_list);
-    // modify_odd_even(container_forward_list);
-
-    // print_container(container_vec);
-    // print_container(container_list);
-    // print_container(container_forward_list);
-
-
-    std::forward_list<int> kuba { 1, 2, 3 };
-    
-    auto haha = kuba.end();
-    haha = kuba.erase_after(haha);
-    // ++haha;
-    // cout << *haha << endl;
-
+    print_container(container_vec);
+    print_container(container_list);
+    print_container(container_forward_list);
 
 
     return 0;
