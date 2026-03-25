@@ -58,20 +58,21 @@ void three_strings(string& s, const string& oldVal, const string& newVal) {
 int main()
 {
 
-    // oldVal index: [18, 19, 20], [25, 26, 27], [33, 34, 35]
     string s_1 { "We managed to win tho it tho was tho hard." };
     string s_2 { "thru the fire and flames" };
+    string s_3 { "nothing to report" };
 
     cout << "s_1: " << s_1 << "\n";
     cout << "s_2: " << s_2 << "\n";
-    
-
+    cout << "s_3 " << s_3 << "\n";
+ 
     three_strings(s_1, "tho", "though");
     three_strings(s_2, "thru", "through");
+    three_strings(s_3, "tho", "though");
 
     cout << "After change " << "s_1: " << s_1 << "\n";
     cout << "After change " << "s_2: " << s_2 << "\n";
-
+    cout << "After change " << "s_3: " << s_3 << "\n"; 
 
     // string buka { "buka|tho|buka" };
     // cout << buka << "\n";
