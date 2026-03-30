@@ -15,6 +15,12 @@ using std::vector;
 using std::string;
 using std::cin;
 
+template<typename T>
+void dbg_print(const T& a) {
+    cout << a << "\n";
+}
+
+void represent_string_boxes(const string& s);
 
 void three_strings(string& s, const string& oldVal, const string& newVal) {
 
@@ -27,19 +33,50 @@ void three_strings(string& s, const string& oldVal, const string& newVal) {
             ++pat;
         }
 
-        if (i >= s.size()) {
-            break;
-        }
 
         if (pat == oldVal.size()) {
 
-            s = s.replace(pos, (pos + oldVal.size() - 1), newVal);
-            i = pos + oldVal.size();
+            s.replace(
+                pos, oldVal.size(), newVal
+            );
+
         }
 
     }
 
 }
+
+void print_horizontal_line(const string& s) {
+    for (unsigned i { 0 }; i < (6 * s.size()); ++i) {
+        cout << "-";
+    }
+    cout << "\n";
+}
+
+
+void represent_string_boxes(const string& s) {
+    print_horizontal_line(s);
+    for (unsigned i { 0 }; i < s.size(); ++i) {
+        if (i < 30) {
+            cout << "|" << s[i] << "|" << " ";
+        }
+        else {
+            cout << "|" << s[i] << " |" << " ";
+        }
+    }
+    cout << "\n";
+    for (unsigned i { 0 }; i < s.size(); ++i) {
+        if (i < 10) {
+            cout << "|" << i << "|" << " ";
+        }
+        else {
+            cout << "|" << i << "|" << " ";
+        }
+    }
+    cout << "\n";
+    print_horizontal_line(s);
+}
+
 
 int main()
 {
