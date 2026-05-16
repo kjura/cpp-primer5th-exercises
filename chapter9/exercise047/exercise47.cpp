@@ -1,6 +1,7 @@
+#include <climits>
 #include <iostream>
-#include <vector>
 #include <cmath>
+#include <ostream>
 #include <string>
 
 // g++ -std=c++20 -pedantic -Wall -Wextra -Werror -Wshadow -Wsign-conversion -g sandbox.cpp  -o sandbox
@@ -11,48 +12,97 @@
 // Redirection in powershell  Get-Content .\input.txt | .\<YOUREXERCISENAME>>.exe
 using std::cout;
 using std::endl;
-using std::vector;
 using std::string;
-using std::cin;
 
 // Exercise 9.47: Write a program that finds each numeric character and then
 // each alphabetic character in the `string` "ab2c3d7R4E6". Write two
 // versions of the program. The first should use `find_first_of`, and the second `find_first_not_of`.
 
+namespace constants {    
+    inline const string numbers { "0123456789" };
+    inline const string letters { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" };
+}
 
-void find_f(const string& s) {
 
-    const string numbers { "0123456789" };
-    const string letters { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" };
-    
-    string::size_type pos = 0;
-    // each iteration finds the next number in name
-    while ((pos = s.find_first_of(numbers, pos)) != string::npos) {
-        cout << "found numeric character at index: " << pos << " element is " << s[pos] << endl;
-        ++pos; 
+enum class Func_Find_First{
+    not_of,
+    of
+};
+
+enum class Character_Type {
+    numeric,
+    letters
+};
+
+std::ostream& operator<<(std::ostream& os, const Character_Type ct) {
+    switch (ct) {
+        case Character_Type::letters: return os << "alphabetic";
+        case Character_Type::numeric: return os << "numeric";
     }
 
-    pos = 0;
-    while ((pos = s.find_first_of(letters, pos)) != string::npos) {
-        cout << "found alphabetic character at index: " << pos << " element is " << s[pos] << endl;
-        ++pos; 
+    return os;
+}
+
+
+void find_f_method_of(const string& str, const string& consts_chars, Character_Type ct) {
+
+        string::size_type pos = 0;
+        while ((pos = str.find_first_of(consts_chars, pos)) != string::npos) {
+            cout << "found " << ct << " character at index: " << pos << " element is " << str[pos] << endl;
+            ++pos; 
     }
 
 }
 
+void find_f_method_not_of(const string& str, const string& consts_chars, Character_Type ct) {
 
-void find_f_not([[maybe_unused]] const string& s) {
+        string::size_type pos = 0;
+        while ((pos = str.find_first_not_of(consts_chars, pos)) != string::npos) {
+            cout << "found " << ct << " character at index: " << pos << " element is " << str[pos] << endl;
+            ++pos; 
+
+
+}
+}
+
+void find_f_func(const string& str, Func_Find_First fff) {
+
+    if (fff == Func_Find_First::of ) {
+
+        find_f_method_of(str, constants::numbers, Character_Type::numeric);
+        find_f_method_of(str, constants::letters, Character_Type::letters);
+
+    }
+    else {
+
+        find_f_method_not_of(str, constants::letters, Character_Type::numeric);
+        find_f_method_not_of(str, constants::numbers, Character_Type::letters);
+    }
+
 }
 
 int main()
 {
 
+    // a: 0, 
+    // b: 1,
+    // 2: 2,
+    // c: 3,
+    // 3: 4, 
+    // d: 5, 
+    // 7:6, 
+    // R:7, 
+    // 4:8, 
+    // E:9, 
+    // 6:10
+
+
+    // f(str, of/on) -> done
+
     string pat { "ab2c3d7R4E6" };
-
-
-    find_f(pat);
-    // find_f_not(pat);
-
+    find_f_func(pat, Func_Find_First::of);
+    cout << "####################################################" << "\n";
+    find_f_func(pat, Func_Find_First::not_of);
 
     return 0;
 }
