@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 #include <vector>
 #include <cmath>
 #include <string>
@@ -6,6 +7,7 @@
 #include <cctype>
 #include <algorithm>
 #include <set>
+#include <ranges>
 
 // g++ -std=c++20 -pedantic -Wall -Wextra -Werror -Wshadow -Wsign-conversion -g sandbox.cpp  -o sandbox
 // g++ -std=c++20 -pedantic -Wall -Wextra -Wsign-conversion -g sandbox.cpp -o sandbox
@@ -19,11 +21,9 @@ using std::vector;
 using std::string;
 using std::cin;
 
-// Exercise 9.49: A letter has an ascender if, as with d or f, part of the letter
-// extends above the middle of the line. A letter has a descender if, as with p or
-// g, part of the letter extends below the line. Write a program that reads a file
-// containing words and reports the longest word that contains neither
-// ascenders nor descenders.
+const string ASCENDER { "tdblfhk" };
+const string DESCENDER { "qypgj" };
+const string ASDE { ASCENDER + DESCENDER };
 
 template<typename T>
 bool is_in(const T& c, const T& val) {
@@ -35,17 +35,21 @@ bool is_in(const T& c, const T& val) {
     }
 }
 
+void print_word(const std::pair<size_t, string>& p) {
+    cout << "length=" << p.first << " " << "word=" << p.second << "\n";
+}
+
+
+// "bu;k-a.".replace([";", "-", "."], "")
 bool validate_basic_tokens(const string& t) {
 
-
-    // Check if white space first
-    if(std::isspace(static_cast<unsigned char>(t.front()))) {
+    if (t.empty()) {
+        return false;
+    }
+    else if(std::isspace(static_cast<unsigned char>(t.front()))) {
             return false;
     }
     else if (t == "-") {
-        return false;
-    }
-    else if (t.empty()) {
         return false;
     }
     else {
@@ -89,7 +93,7 @@ int main()
 
 
     // print_tokens(tokens);
-    for (auto it { tokens.begin() }; (it != tokens.end()) & !it->empty(); ++it) {
+    for (auto it { tokens.begin() }; (it != tokens.end()) && !it->empty(); ++it) {
         auto& token { *it };
 
         vector<char> stop_words {};
@@ -101,9 +105,6 @@ int main()
                 stop_words.push_back(*it_token);
             }
             else if (*it_token == ',') {
-                stop_words.push_back(*it_token);
-            }
-            else if (*it_token == ';') {
                 stop_words.push_back(*it_token);
             }
             else if (*it_token == ':') {
@@ -118,6 +119,9 @@ int main()
             else if (*it_token == '"') {
                 stop_words.push_back(*it_token);
             }
+            else if (*it_token == '\'') {
+                stop_words.push_back(*it_token);
+            }
         }
 
         for (const auto sw : stop_words) {
@@ -127,11 +131,35 @@ int main()
         
     }
 
-    // print_tokens(tokens);
 
-    std::set<string> unique_tokens(tokens.cbegin(), tokens.cend());
+    const std::set<string> unique_tokens(tokens.cbegin(), tokens.cend());
+    std::vector<std::pair<size_t, string>> candidates {}; 
+    for (auto const& e : unique_tokens) {
 
+        if (e.find_first_of(ASDE) == std::string::npos) {
+           
+            candidates.push_back(std::pair(e.size(), e));
+        
+        }
 
+    }
 
-    return 0;
+    if (!candidates.size()) {
+        cout << "The text contains ascenders or descenders only" << "\n";
+        return 0;
+    }
+
+    else {
+        std::ranges::sort(candidates, [](std::pair<size_t, string> t1, std::pair<size_t, string> t2) { return t1.first > t2.first; });
+        print_word(candidates[0]);
+        // for (unsigned i { 0 }; i < candidates.size(); ++i) {
+        // print_word(candidates[i]);
+        // if (i > 5) {
+        //     break;
+        // }
+        return 0;
+        
+    }
+        
+    
 }
