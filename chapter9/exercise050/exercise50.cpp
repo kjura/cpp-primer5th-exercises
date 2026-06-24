@@ -12,10 +12,8 @@
 // PLACEHOLDEREXERCISENAME ./exercise5 < input.txt >> output.txt
 // Redirection in powershell  Get-Content .\input.txt | .\<YOUREXERCISENAME>>.exe
 using std::cout;
-using std::endl;
 using std::vector;
 using std::string;
-using std::cin;
 
 
 template <typename T>
@@ -25,10 +23,10 @@ void print(const T& c) {
     }
 }
 
-std::vector<string> GenerateRandomVector(size_t NumberCount, int minimum, int maximum) {
-    std::random_device rd; 
-    std::mt19937 gen(rd()); // these can be global and/or static, depending on how you use random elsewhere
 
+std::vector<string> GenerateRandomVector(const size_t NumberCount, const int minimum, const int maximum) {
+    std::random_device rd; 
+    std::mt19937 gen(rd()); 
     std::vector<int> values(NumberCount); 
     std::uniform_int_distribution<> dis(minimum, maximum);
     std::generate(values.begin(), values.end(), [&](){ return dis(gen); });
@@ -45,10 +43,9 @@ std::vector<string> GenerateRandomVector(size_t NumberCount, int minimum, int ma
 }
 
 
-std::vector<string> GenerateRandomVectorFloatingPoint(size_t NumberCount, double minimum, double maximum) {
+std::vector<string> GenerateRandomVector(const size_t NumberCount, const double minimum, const double maximum) {
     std::random_device rd;
-    std::mt19937 gen(rd()); // these can be global and/or static, depending on how you use random elsewhere
-
+    std::mt19937 gen(rd());
     std::vector<double> values(NumberCount);
     std::uniform_real_distribution<> dis(minimum, maximum);
     std::generate(values.begin(), values.end(), [&]() { return dis(gen); });
@@ -78,7 +75,7 @@ int main()
     cout << "Sum of numbers in container is " << sum << "\n";
     cout << "\n";
 
-    vector<string> container_floats { GenerateRandomVectorFloatingPoint(4, 0.0, 2.0) };
+    vector<string> container_floats { GenerateRandomVector(4, 0.0, 2.0) };
     print(container_floats);
 
     double sum_floats {0};
