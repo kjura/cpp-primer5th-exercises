@@ -1,0 +1,1 @@
+Exercise 10.3: Use `accumulate` to sum the elements in a `vector<int>`.
