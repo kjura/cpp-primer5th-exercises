@@ -16,6 +16,17 @@ using std::vector;
 using std::string;
 using std::cin;
 
+
+template <typename T>
+void print_collection(const T& c) {
+
+    for (const auto& e : c) {
+        cout << e << " ";
+    }
+
+    cout << "\n";
+}
+
 int main()
 {
 
