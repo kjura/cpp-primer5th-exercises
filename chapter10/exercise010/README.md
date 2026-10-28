@@ -1,0 +1,1 @@
+Exercise 10.10: Why do you think the algorithms don’t change the size of containers?
